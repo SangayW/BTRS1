@@ -1,0 +1,27 @@
+#sidebar,h5{
+	position: relative;
+	margin-top: -40px;
+	margin-right: -60px;
+}
+#parent {
+    width:100%;
+    margin-top: -22px;
+    height:100%;
+}
+#sidebar {
+    padding-top:50px; /* padding-top must be the same as header height */
+    width:200px;
+    height:100%;
+    background-color: #e6f2ff;
+    box-sizing:border-box;
+    position: fixed;
+    z-index:99;
+}
+#main-content {
+    position: relative;
+    width: 100%;
+    padding-left:200px; /* padding-left must be the same as sidebar width */
+    height: 300px; /* This could be anything, content should scroll vertical */
+    box-sizing:border-box;
+    padding-top: 50px; /* padding-top must be the same as header height */
+}

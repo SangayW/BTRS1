@@ -1,0 +1,73 @@
+.bg{
+	background: url('../image/inside-bus.png');
+	background-size: cover;
+	height: 900px;
+}
+
+.menu{
+	font-family: 'Acme', sans-serif;
+	padding:5px;
+	text-align: center;
+}
+
+.menu1{
+	margin-top: 40px;
+}
+
+.menulink{
+	color:#fff;
+	font-size: 18px;
+}
+
+.menulink:link, .menulink:visited {
+    text-decoration: none;
+}
+
+.menulink:hover{
+	color:black;
+	text-decoration: none;
+}
+
+.searchopt{
+    position: relative;
+    top:455px;
+    bottom: 0px;	
+	padding: 30px;
+	height :190px;
+	background: rgba(86, 63, 70, 0.8); 
+}
+
+.searchoptin{
+	padding-top: 25px;
+}
+
+.reserveform{
+	font-family: 'Cabin', sans-serif;
+	padding-right: 40px;
+	font-size: 19px;
+	color:#ffffff;
+	margin-left: 45px;
+}
+
+.btnstyle{
+	width:100px;
+	height:42px;
+}
+
+.body-text{
+	position: relative;
+	top:250px ;
+	margin-left: 80px;
+}
+
+.mid-text{	
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 65px;
+	color: white;
+}
+
+.footerstyle{
+	padding: 30px;
+	text-align: center;
+}

@@ -1,0 +1,90 @@
+.bg{
+	background: url('../img/inside-bus.png');	
+	background-size: cover;
+	height: 900px;
+	box-shadow: 0px 16px 30px -13px #757475;
+}
+
+.searchopt{
+    position: relative;
+    top:310px;
+    bottom: 0px;	
+	padding: 20px;
+}
+
+.searchoptin{
+	padding: 25px;
+	background: rgba(86, 63, 70, 0.8); 
+}
+
+.reserveform{
+	font-family: 'Cabin', sans-serif;
+	padding-right: 40px;
+	font-size: 19px;
+	color:#ffffff;
+	margin-left: 45px;
+}
+
+.btnstyle{
+	width:100px;
+	height:42px;
+}
+
+.body-text{
+	position: relative;
+	top:190px ;
+	margin-left: 80px;
+}
+
+.mid-text{	
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 65px;
+	color: white;
+}
+
+.advimg{
+	position: relative;
+	top:-1px;
+	text-align: center;
+	box-shadow: 0px 16px 30px -13px #757475;
+	padding:30px;
+}
+
+.advhead{
+	font-family: ;
+	font-weight: bold;
+}
+.advtext{
+	font-family: 'Kalam', cursive;
+	font-size: 19px;
+	color: #999999;
+}
+
+.footerstyle{
+	padding:20px;
+	/*background-color: #b2b2b2;*/
+	position: relative;
+	top:80px;
+	font-family: 'Raleway', sans-serif;
+	text-align: center;
+	font-size: 16px;
+	box-shadow: 0px 16px 30px -13px #757475;
+	margin-bottom: 1px;
+}
+
+.fhead{
+	font-weight: bold;
+}
+
+/*
+ .footerall{
+ 	position:relative;
+ 	top: 170px;
+ 	right: 0px;
+ 	left: 0px;
+ 	bottom:0px; 
+ 	background-color: black;
+  	color:white;
+ }
+*/
