@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Bus;
 use App\Journey;
+use App\Schedule;
 
 class BusController extends Controller
 {
-	public function __construct()
-    {
-        $this->middleware('auth:admin');
-    }
+	// public function __construct()
+ //    {
+ //        $this->middleware('auth:admin');
+ //    }
     /**
      * Display a listing of the resource.
      *
@@ -48,6 +49,7 @@ class BusController extends Controller
             'seatno'=>'required',
             'dname'=>'required',
             'driverphone'=>'required',
+            'schedule_id'=>'required',
             'journey_id'=>'required',
             ]);
 
@@ -57,6 +59,7 @@ class BusController extends Controller
         $bus->No_of_seat=$request->seatno;
         $bus->Driver_name=$request->dname;
         $bus->Driver_phone=$request->driverphone;
+        $bus->schedule_id=$request->schedule_id;
         $bus->journey_id=$request->journey_id;
         $bus->save();
         //Session::flash('success','Journey has been created successfully');
@@ -117,5 +120,28 @@ class BusController extends Controller
        $bus = bus::findOrFail($id);
         $bus->delete();
         return redirect()->route('admin.bus.index');
+    }
+    public function search(Request $request)
+    {
+        $schedule_id=array();
+        $source=$request->journey_id1;
+        $destination=$request->journey_id2;
+        $date=$request->date;
+        $schedules=Schedule::where('Date',$date)->pluck('id');
+        $schedule=explode(',',$schedules);
+        foreach($schedule as $schedules_id)
+        {
+            $schedule_id[]=trim($schedules_id,'[]');
+        }
+        $journey=Journey::where('source',$source)->where('destination',$destination)->get();
+        $buses=Bus::join('journeys','buses.journey_id','journeys.id')
+            ->select('buses.*')
+            ->where('journeys.source','=',$source)
+            ->where('journeys.destination','=',$destination)
+            ->whereIn('schedule_id',$schedule_id)
+            ->get();
+       //return view('admin.bus.index',compact('buses'));
+       $journeys=Journey::all();
+        return view('welcome',compact('buses','journeys'));
     }
 }

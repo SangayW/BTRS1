@@ -6,7 +6,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading" align="center">Registerd User Login</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
+                    <form class="form-horizontal" role="form" method="post" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

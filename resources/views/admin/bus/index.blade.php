@@ -27,7 +27,8 @@
           <th>Bus Number</th>
           <th>Bus Name</th>
           <th>No of seats</th>
-          <th>Proprietor Name</th>
+          <th>Travel_date</th>
+          <th>Reporting_time</th>
           <th>Driver Phone No</th>
           <th>Journey Source</th>
           <th>Journey Destination</th>
@@ -43,8 +44,9 @@
             <td>{{$bus->Bus_no}}</td>
             <td>{{$bus->Bus_name}}</td>
             <td>{{$bus->No_of_seat}}</td>
-            <td>{{$bus->Driver_name}}</td>
-            <td>{{$bus->Driver_phone}}</td>  
+            <td>{{$bus->schedule->Date}}</td>  
+            <td>{{$bus->schedule->Reporting_time}}</td>  
+            <td>{{$bus->schedule->Departure_time}}</td>  
             <td>{{$bus->journey->source}}</td> 
             <td>{{$bus->journey->destination}}</td>         
             <td>
@@ -133,7 +135,19 @@
                    @endif
               </div>
          </div>
-         
+         <div class="form-group{{ $errors->has('journey_id') ? ' has-error' : '' }}">
+            <label for='schedule_id' class='col-xs-2'>Bus Schedule</label>
+                <div class='col-xs-10 input-group'>
+                   <select name='schedule_id' class='form-control'>
+                   <?php $schedule=App\Schedule::all();
+                   ?>
+                     <option  value='0' disabled selected>Select schedule</option>
+                     @foreach($schedule as $schedule)
+                       <option value='{{$schedule->id}}'>{{$schedule->Date}}</option>
+                     @endforeach
+                   </select>
+              </div>
+         </div>
           <div class="form-group{{ $errors->has('journey_id') ? ' has-error' : '' }}">
             <label for='journey_id' class='col-xs-2'>journey</label>
                 <div class='col-xs-10 input-group'>

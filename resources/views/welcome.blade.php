@@ -89,21 +89,24 @@
         <div class="container-fluid searchoptin">
             <span style="font-size: 22px; color:#ffffff; font-weight: bold;">Find Bus Tickets</span>
             <div class="container-fluid searchoptin">
-            <form class="form-inline">
+            <form class="form-inline" method="post" action="{{route('search_bus')}}">
+              {{csrf_field()}}
               <div class="form-group reserveform">
                 <p>Traveling From:</p>
-                <select class="form-control" name="journey_id">
+                <select class="form-control" name="journey_id1">
+                  <option disabled selected>select your source of travel</option>
                   @foreach($journeys as $journey)
-                    <option value='{{$journey->id}}'>{{ $journey->source}}</option>
+                    <option value='{{$journey->source}}'>{{ $journey->source}}</option>
                   @endforeach                  
                 </select>
               </div>
 
               <div class="form-group reserveform">
                 <p>Traveling To:</p>
-                <select class="form-control" name="journey_id">
+                <select class="form-control" name="journey_id2">
+                  <option disabled selected>select your destination</option>
                   @foreach($journeys as $journey)
-                    <option value='{{$journey->id}}'>{{ $journey->destination}}</option>
+                    <option value='{{$journey->destination}}'>{{ $journey->destination}}</option>
                   @endforeach                  
                 </select>
                 
@@ -123,7 +126,7 @@
               <p>Date:</p>
                   <div class="form-group">
                                 <div class='input-group date' id='datetimepicker1'>
-                                    <input type='date' class="form-control" />
+                                    <input type='date' class="form-control" name='date'/>
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -133,15 +136,68 @@
 
               <div class="form-group reserveform">
               <br>
-                  <button type="submit" class="btn btn-default btnstyle">Search</button>
+                  <button type="submit" class="btn btn-default btnstyle" value='search' name='search'>Search</button>
               </div>
-
-              </form>
+                </form>
             </div>
         </div>
     </div>
     </div><!--end sharchop-->
 
+              @if(isset($_POST['search']))
+               <div id="main-content">
+      <div class="row">
+        <div class="col-sm-11" style="margin-top:30px">
+            <h2 style='text-align:center'> Available bus</h2>
+        </div>
+      </div>    
+      <div class='row'>
+        <div class="col-sm-11" style='margin-top:20px; margin-left:30px;'>
+        <table class="table table-bordered table-striped table-responsive" id="table1">
+        <thead>
+        <tr>
+          <th>Sl no:</th>
+          <th>Bus Number</th>
+          <th>Bus Name</th>
+          <th>No of seats</th>
+          <th>Travel_date</th>
+          <th>Reporting_time</th>
+          <th>Departure_time</th>
+          <th>Driver Phone No</th>
+          <th>Journey Source</th>
+          <th>Journey Destination</th>
+          <th>Action</th>
+        </tr> 
+        </thead>
+        <tbody>
+          <?php $id=1?>
+          @foreach($buses as $bus)
+          <tr>
+            <td>{{$id++}}</td>
+            <td>{{$bus->Bus_no}}</td>
+            <td>{{$bus->Bus_name}}</td>
+            <td>{{$bus->No_of_seat}}</td>
+            <td>{{$bus->schedule->Date}}</td>  
+            <td>{{$bus->schedule->Reporting_time}}</td>  
+            <td>{{$bus->schedule->Departure_time}}</td>  
+            <td>{{$bus->Driver_phone}}</td>
+            <td>{{$bus->journey->source}}</td> 
+            <td>{{$bus->journey->destination}}</td>         
+            <td>
+              <form class="form-group" action="{{route('login')}}" method='get'>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <button  class='btn btn-primary' type='submit'>Reserve</button>
+                    </form>
+            </td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>        
+    </div>        
+  </div><!--main content end-->
+  @endif
+            
     <!--Advatages-->
     <div class="container-fluid">
       <div class="container">
@@ -217,3 +273,4 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </body>
 </html>
+

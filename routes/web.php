@@ -19,11 +19,12 @@ Route::get('/schedule', 'PageController@schedule');
 //Normal users
 Route::group(['middleware' => 'auth'], function () {
 	Auth::routes();	
-	Route::get('/home', 'UserController@index');
+	Route::get('/home', 'UserController@index')->name('login');
 	Route::get('/home/bus', 'UserController@bus');
 	Route::get('/home/journey', 'UserController@journey');
 	Route::get('/home/schedule', 'UserController@schedule');
 	Route::get('/home/reservation', 'ReservationController@index');
+  // Route::get('book_bus_ticket','ReservationController@reserve')->name('book_ticket');
 });
 Auth::routes();
 Route::get('/home', 'UserController@index');
@@ -46,6 +47,8 @@ Route::group(['middleware' => 'web'], function () {
 	Route::delete('admin/bus/destroy/{id}',['as'=>'admin.bus.destroy','uses'=>'BusController@destroy']);
 	Route::get('admin/bus/{id}/edit',['as'=>'admin.bus.edit','uses'=>'BusController@edit']);
 	Route::patch('admin/bus/update/{id}',['as'=>'admin.bus.update','uses'=>'BusController@update']); 
+  Route::post('search_bus','BusController@search')->name('search_bus');
+  
 	//Bus Schedule 
 	Route::get('admin/schedule',['as'=>'admin.schedule.index','uses'=>'ScheduleController@index']);
 	Route::get('admin/schedule/create',['as'=>'admin.schedule.create','uses'=>'ScheduleController@create']);
