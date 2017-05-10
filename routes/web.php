@@ -14,6 +14,7 @@
 Route::get('/', 'PageController@index');
 Route::get('/journey', 'PageController@journey');
 Route::get('/bus', 'PageController@bus');
+Route::get('/search', 'BusController@search')->name('search');
 Route::get('/schedule', 'PageController@schedule');
 
 //Normal users

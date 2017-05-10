@@ -25,3 +25,10 @@
     box-sizing:border-box;
     padding-top: 50px; /* padding-top must be the same as header height */
 }
+#main-content1 {
+    position: relative;
+    background-color: #e6f2ff;
+    height: 300px; /* This could be anything, content should scroll vertical */
+    box-sizing:border-box;
+    padding-top: 5px; /* padding-top must be the same as header height */
+}

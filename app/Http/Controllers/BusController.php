@@ -23,7 +23,6 @@ class BusController extends Controller
         $buses=Bus::all();
         return view('admin.bus.index',compact('buses'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -142,6 +141,6 @@ class BusController extends Controller
             ->get();
        //return view('admin.bus.index',compact('buses'));
        $journeys=Journey::all();
-        return view('welcome',compact('buses','journeys'));
+        return view('users.search',compact('buses'));
     }
 }
