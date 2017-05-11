@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Bus;
 use App\Journey;
 use App\Schedule;
+use App\SeatInformation;
+use Session;
 
 class BusController extends Controller
 {
@@ -142,5 +144,234 @@ class BusController extends Controller
        //return view('admin.bus.index',compact('buses'));
        $journeys=Journey::all();
         return view('users.search',compact('buses'));
+    }
+
+    public function retrieveSeats(Request $request)
+    {
+         if($request->ajax()){
+            $seat=SeatInformation::all();
+            return response()->json($seat);
+        }
+    }
+
+
+    public function seatInfo(Request $request)
+    {
+       $count=0;
+       if(!empty($request->val1))
+        {
+            $seat=SeatInformation::where('seatNo',$request->val1)->first();
+            $seat->status=1;
+            $seat->save();
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $bus->save();
+            $count++;
+        }
+       if(!empty($request->val2))
+       {
+            $seat=SeatInformation::where('seatNo',$request->val2)->first();
+            $seat->status=1;
+            $seat->save();
+
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $bus->save();
+            $count++;
+       }
+       if(!empty($request->val3))
+       {
+            $seat=SeatInformation::where('seatNo',$request->val3)->first();
+            $seat->status=1;
+            $seat->save();
+
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $bus->save();
+            $count++;
+       }
+       if(!empty($request->val4))
+       {
+            $seat=SeatInformation::where('seatNo',$request->val4)->first();
+            $seat->status=1;
+            $seat->save();
+
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $bus->save();
+            $count++;
+       }
+       if(!empty($request->val5))
+       {
+            $seat=SeatInformation::where('seatNo',$request->val5)->first();
+            $seat->status=1;
+            $seat->save();
+
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $bus->save();
+            $count++;
+       }
+       if(!empty($request->val6))
+       {
+            $seat=SeatInformation::where('seatNo',$request->val6)->first();
+            $seat->status=1;
+            $seat->save();
+
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $bus->save();
+            $count++;
+       }
+       if(!empty($request->val7))
+       {
+            $seat=SeatInformation::where('seatNo',$request->val7)->first();
+            $seat->status=1;
+            $seat->save();
+
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $bus->save();
+            $count++;
+       }
+       if(!empty($request->val8))
+       {
+            $seat=SeatInformation::where('seatNo',$request->val8)->first();
+            $seat->status=1;
+            $seat->save();
+
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $bus->save();
+            $count++;
+       }
+       if(!empty($request->val9))
+       {
+            $seat=SeatInformation::where('seatNo',$request->val9)->first();
+            $seat->status=1;
+            $seat->save();
+            
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $bus->save();
+            $count++;
+       }
+       if(!empty($request->val10))
+       {
+            $seat=SeatInformation::where('seatNo',$request->val10)->first();
+            $seat->status=1;
+            $seat->save();
+            
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $bus->save();
+            $count++;
+       }
+       if(!empty($request->val11))
+       {
+            $seat=SeatInformation::where('seatNo',$request->val11)->first();
+            $seat->status=1;
+            $seat->save();
+           
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $bus->save();
+            $count++;
+       }
+       if(!empty($request->val12))
+       {
+            $seat=SeatInformation::where('seatNo',$request->val12)->first();
+            $seat->status=1;
+            $seat->save();
+
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $bus->save();
+            $count++;
+       }
+       if(!empty($request->val13))
+       {
+            $seat=SeatInformation::where('seatNo',$request->val13)->first();
+            $seat->status=1;
+            $seat->save();
+           
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $bus->save();
+            $count++;
+       }
+       if(!empty($request->val14))
+       {
+            $seat=SeatInformation::where('seatNo',$request->val14)->first();
+            $seat->status=1;
+            $seat->save();
+           
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $bus->save();
+            $count++;
+       }
+       if(!empty($request->val15))
+       {
+            $seat=SeatInformation::where('seatNo',$request->val15)->first();
+            $seat->status=1;
+            $seat->save();
+            
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $bus->save();
+            $count++;
+       }
+       if(!empty($request->val16))
+       {
+            $seat=SeatInformation::where('seatNo',$request->val16)->first();
+            $seat->status=1;
+            $seat->save();
+            
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $bus->save();
+            $count++;
+       }
+       if(!empty($request->val17))
+       {
+            $seat=SeatInformation::where('seatNo',$request->val17)->first();
+            $seat->status=1;
+            $seat->save();
+
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $bus->save();
+            $count++;
+       }
+       if(!empty($request->val18))
+       {
+            $seat=SeatInformation::where('seatNo',$request->val18)->first();
+            $seat->status=1;
+            $seat->save();
+            
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $bus->save();
+            $count++;
+       }
+       if(!empty($request->val19))
+       {
+            $seat=SeatInformation::where('seatNo',$request->val19)->first();
+            $seat->status=1;
+            $seat->save();
+            
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $bus->save();
+            $count++;
+       }
+       else
+       {
+         Session::put('count',$count);
+         return redirect()->route('user_login',Session::get('bus_no'));
+       }
+       Session::put('count',$count);
+       return redirect()->route('user_login',Session::get('bus_no'));
     }
 }

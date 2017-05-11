@@ -28,6 +28,8 @@ Route::group(['middleware' => 'auth'], function () {
 });
 Route::get('/reserve/{id}','TicketController@reserve')->name('reserve_bus');
 Route::post('search_bus','BusController@search')->name('search_bus');
+Route::post('select_seat','BusController@seatInfo')->name('select_seat');
+Route::get('retrieve_seat_info','BusController@retrieveSeats')->name('seat_info');
 Auth::routes();
 Route::post('/login',['uses'=>'LoginController@login','as'=>'login']);
 Route::post('/register',['uses'=>'LoginController@register','as'=>'register']);

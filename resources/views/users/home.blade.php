@@ -21,6 +21,15 @@
            <br>
            <span><strong>No.of seats available:{{$bus->No_of_seat.'seats'}}</strong></span>
            <button class='btn btn-primary' data-toggle='modal' data-target='#seatModal'>View</button>
+           <br>
+           <span><strong>No_of_seat_booked:</strong>{{Session::get('count')}}</span>
+           <br>
+           <span><strong>Fare/person:</strong>Nu.{{$bus->price}}</span>
+           <br>
+           <span><strong>Total Fare:</strong>Nu.{{$bus->price*Session::get('count')}}</span>
+           <br>
+           &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;<button class='btn btn-success'>Payment</button>
+
     </div>
 </div>
 <div class="modal fade" id="seatModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -29,9 +38,12 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Choose your favorite seat</h4>
+        </div>
         <div>
+        <form action='{{route('select_seat')}}' method='post'>
+           {{csrf_field()}}
           <div class="modal-body">
-          <table border='0px' id="tab" border-spacing="4px"> 
+          <table border='0px' id="tab" border-spacing="4px" align='center'> 
           <col width="60">
           <col width="80">
           <col width="60">
@@ -43,46 +55,141 @@
             <td></td>
             <td colspan="4"><img src="img/diver.png" alt="" border=3 height=30 width=30>Diver</td>
           </tr>
-            <tr><td><input type="checkbox"><img src="img/seat.png" alt="" border=3 height=30 width=30>1</td>
+            <tr><td><input type="checkbox" value=1 name='val1' id='val1'><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
                 <td></td>
-                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>2</td>
-                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>3</td>
+                <td><input type="checkbox" value=2 name='val2' id='val2'><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
+                <td><input type="checkbox" value=3 name='val3' id='val3'><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
             </tr>
             <br>
-            <tr><td><img src="img/seat.png" alt="" border=3 height=30 width=30>4</td>
+            <tr><td><input type="checkbox" value=4 name='val4' id='val4'><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
                 <td></td>
-                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>5</td>
-                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>6</td>
+                <td><input type="checkbox" value=5 name='val5' id='val5'><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
+                <td><input type="checkbox" value=6 name='val6' id='val6' ><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
             </tr>
-            <tr><td><img src="img/seat.png" alt="" border=3 height=30 width=30>7</td>
+            <tr><td><input type="checkbox" value=7 name='val7' id='val7'><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
                 <td></td>
-                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>8</td>
-                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>9</td>
+                <td><input type="checkbox" value=8 name='val8' id='val8'><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
+                <td><input type="checkbox" value=9 name='val9' id='val9'><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
             </tr>
-            <tr><td><img src="img/seat.png" alt="" border=3 height=30 width=30>10</td>
+            <tr><td><input type="checkbox" value=10 name='val10' id='val10'><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
                 <td></td>
-                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>11</td>
-                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>12</td>
+                <td><input type="checkbox" value=11 name='val11' id='val11'><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
+                <td><input type="checkbox" value=12 name='val12' id='val12'><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
             </tr>
-            <tr><td><img src="img/seat.png" alt="" border=3 height=30 width=30>13</td>
+            <tr><td><input type="checkbox" value=13 name='val13' id='val13'><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
                 <td></td>
-                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>14</td>
-                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>15</td>
+                <td><input type="checkbox" value=14 name='val14' id='val14'><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
+                <td><input type="checkbox" value=15 name='val15' id='val15'><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
             </tr>
             <tr>
-                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>16</td>
-                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>17</td>
-                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>18</td>
-                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>19</td>
+                <td><input type="checkbox" value=16 name='val16' id='val16'><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
+                <td><input type="checkbox" value=17 name='val17' id='val17'><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
+                <td><input type="checkbox" value=18 name='val18' id='val18'><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
+                <td><input type="checkbox" value=19 name='val19' id='val19'><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
             </tr>
           </table>
         </div>
+       
       </div>
        <div class="modal-footer">
-          <button type="" class="btn btn-primary" id='save'>Ok</button>
+          <button type="submit" class="btn btn-primary" id='save'>Ok</button>
       </div>
+       </form>
       </div>
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  var url='{{route('seat_info')}}';
+  $.ajax({
+        url: url,
+        type:"GET", 
+        data: {"id":' '}, 
+        success: function(result){
+          $.each(result,function(key,val)
+          {
+            if(val.status==1 && val.seatNo==$('#val1').val())
+            {
+              $('#val1').hide();
+            }
+            else if(val.status==1 && val.seatNo==$('#val2').val())
+            {
+              $('#val2').hide();
+            }
+            else if(val.status==1 && val.seatNo==$('#val3').val())
+            {
+              $('#val3').hide();
+            }
+            else if(val.status==1 && val.seatNo==$('#val4').val())
+            {
+              $('#val4').hide();
+            }
+            else if(val.status==1 && val.seatNo==$('#val5').val())
+            {
+              $('#val5').hide();
+            }
+            else if(val.status==1 && val.seatNo==$('#val6').val())
+            {
+              $('#val6').hide();
+            }
+            else if(val.status==1 && val.seatNo==$('#val7').val())
+            {
+              $('#val7').hide();
+            }
+            else if(val.status==1 && val.seatNo==$('#val8').val())
+            {
+              $('#val8').hide();
+            }
+            else if(val.status==1 && val.seatNo==$('#val9').val())
+            {
+              $('#val9').hide();
+            }
+            else if(val.status==1 && val.seatNo==$('#val10').val())
+            {
+              $('#val10').hide();
+            }
+            else if(val.status==1 && val.seatNo==$('#val11').val())
+            {
+              $('#val11').hide();
+            }
+            else if(val.status==1 && val.seatNo==$('#val12').val())
+            {
+              $('#val12').hide();
+            }
+            else if(val.status==1 && val.seatNo==$('#val13').val())
+            {
+              $('#val13').hide();
+            }
+            else if(val.status==1 && val.seatNo==$('#val14').val())
+            {
+              $('#val14').hide();
+            }
+            else if(val.status==1 && val.seatNo==$('#val15').val())
+            {
+              $('#val15').hide();
+            }
+            else if(val.status==1 && val.seatNo==$('#val16').val())
+            {
+              $('#val16').hide();
+            }
+            else if(val.status==1 && val.seatNo==$('#val17').val())
+            {
+              $('#val17').hide();
+            }
+            else if(val.status==1 && val.seatNo==$('#val18').val())
+            {
+              $('#val18').hide();
+            }
+            else if(val.status==1 && val.seatNo==$('#val19').val())
+            {
+              $('#val19').hide();
+            }
+            else
+            {
+
+            }
+          });
+        }
+      });
+</script>>
 @endsection
