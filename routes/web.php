@@ -30,6 +30,7 @@ Route::get('/reserve/{id}','TicketController@reserve')->name('reserve_bus');
 Route::post('search_bus','BusController@search')->name('search_bus');
 Auth::routes();
 Route::post('/login',['uses'=>'LoginController@login','as'=>'login']);
+Route::post('/register',['uses'=>'LoginController@register','as'=>'register']);
 Route::get('/home', 'UserController@index')->name('user_login');
 
 
