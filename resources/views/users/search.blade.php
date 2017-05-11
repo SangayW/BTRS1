@@ -118,10 +118,14 @@
             <td>{{$bus->journey->source}}</td> 
             <td>{{$bus->journey->destination}}</td>         
             <td>
+                @if($bus->status==0)
                 <form class="form-group" action="{{route('reserve_bus',$bus->Bus_no)}}" method='get'>
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <button  class='btn btn-primary' type='submit'>Reserve</button>   
+                <button  class='btn btn-primary' type='submit'>Reserve</button> 
                 </form> 
+                @else
+                  <span class='btn-success'>No seats</span>
+                @endif
             </td>
           </tr>
           @endforeach

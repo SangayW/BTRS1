@@ -93,6 +93,7 @@
       </div>
        <div class="modal-footer">
           <button type="submit" class="btn btn-primary" id='save'>Ok</button>
+          <button class="btn btn-default" data-dismiss="modal" >Cancel</button>
       </div>
        </form>
       </div>

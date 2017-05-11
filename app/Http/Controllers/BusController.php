@@ -165,6 +165,10 @@ class BusController extends Controller
             $seat->save();
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            if($bus->No_of_seat==0)
+            {
+                $bus->status=1;
+            }
             $bus->save();
             $count++;
         }
@@ -176,6 +180,10 @@ class BusController extends Controller
 
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            if($bus->No_of_seat==0)
+            {
+                $bus->status=1;
+            }
             $bus->save();
             $count++;
        }
@@ -187,6 +195,10 @@ class BusController extends Controller
 
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            if($bus->No_of_seat==0)
+            {
+                $bus->status=1;
+            }
             $bus->save();
             $count++;
        }
@@ -198,6 +210,10 @@ class BusController extends Controller
 
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            if($bus->No_of_seat==0)
+            {
+                $bus->status=1;
+            }
             $bus->save();
             $count++;
        }
@@ -209,6 +225,10 @@ class BusController extends Controller
 
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            if($bus->No_of_seat==0)
+            {
+                $bus->status=1;
+            }
             $bus->save();
             $count++;
        }
@@ -220,6 +240,10 @@ class BusController extends Controller
 
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            if($bus->No_of_seat==0)
+            {
+                $bus->status=1;
+            }
             $bus->save();
             $count++;
        }
@@ -231,6 +255,10 @@ class BusController extends Controller
 
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            if($bus->No_of_seat==0)
+            {
+                $bus->status=1;
+            }
             $bus->save();
             $count++;
        }
@@ -242,6 +270,10 @@ class BusController extends Controller
 
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            if($bus->No_of_seat==0)
+            {
+                $bus->status=1;
+            }
             $bus->save();
             $count++;
        }
@@ -253,6 +285,10 @@ class BusController extends Controller
             
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            if($bus->No_of_seat==0)
+            {
+                $bus->status=1;
+            }
             $bus->save();
             $count++;
        }
@@ -264,6 +300,10 @@ class BusController extends Controller
             
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            if($bus->No_of_seat==0)
+            {
+                $bus->status=1;
+            }
             $bus->save();
             $count++;
        }
@@ -275,6 +315,10 @@ class BusController extends Controller
            
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            if($bus->No_of_seat==0)
+            {
+                $bus->status=1;
+            }
             $bus->save();
             $count++;
        }
@@ -286,6 +330,10 @@ class BusController extends Controller
 
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            if($bus->No_of_seat==0)
+            {
+                $bus->status=1;
+            }
             $bus->save();
             $count++;
        }
@@ -297,6 +345,10 @@ class BusController extends Controller
            
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            if($bus->No_of_seat==0)
+            {
+                $bus->status=1;
+            }
             $bus->save();
             $count++;
        }
@@ -308,6 +360,10 @@ class BusController extends Controller
            
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            if($bus->No_of_seat==0)
+            {
+                $bus->status=1;
+            }
             $bus->save();
             $count++;
        }
@@ -319,6 +375,10 @@ class BusController extends Controller
             
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            if($bus->No_of_seat==0)
+            {
+                $bus->status=1;
+            }
             $bus->save();
             $count++;
        }
@@ -330,6 +390,10 @@ class BusController extends Controller
             
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            if($bus->No_of_seat==0)
+            {
+                $bus->status=1;
+            }
             $bus->save();
             $count++;
        }
@@ -341,6 +405,10 @@ class BusController extends Controller
 
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            if($bus->No_of_seat==0)
+            {
+                $bus->status=1;
+            }
             $bus->save();
             $count++;
        }
@@ -352,6 +420,10 @@ class BusController extends Controller
             
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            if($bus->No_of_seat==0)
+            {
+                $bus->status=1;
+            }
             $bus->save();
             $count++;
        }
@@ -363,6 +435,10 @@ class BusController extends Controller
             
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            if($bus->No_of_seat==0)
+            {
+                $bus->status=1;
+            }
             $bus->save();
             $count++;
        }
