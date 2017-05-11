@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Bus;
 use App\Journey;
 use App\Schedule;
+use Session;
 class UserController extends Controller
 {
     /**
@@ -24,8 +25,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('users.home');
+    { 
+       $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+       return view('users.home',compact('bus'));
     }
    public function journey(){   
         $journeys=Journey::all();
@@ -39,5 +41,9 @@ class UserController extends Controller
     public function schedule(){
         $schedules=Schedule::all();
         return view('users.schedule',compact('schedules'));
+    }
+    public function reserve()
+    {
+       echo "jfdkfd";
     }
 }

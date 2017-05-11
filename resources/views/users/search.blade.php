@@ -45,12 +45,12 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+                    {{-- <ul class="nav navbar-nav navbar-right"> --}}
                         <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li style="margin-top: 30px; font-size:18px;"><a href="{{ route('login') }}">Login</a></li>
-                            <li style="margin-top: 30px; font-size:18px;"><a href="{{ route('register') }}">Register</a></li>
-                        @else
+                       {{--  @if (Auth::guest()) --}}
+                           {{--  <li style="margin-top: 30px; font-size:18px;"><a href="{{ route('login') }}">Login</a></li>
+                            <li style="margin-top: 30px; font-size:18px;"><a href="{{ route('register') }}">Register</a></li> --}}
+                       {{--  @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->email }} <span class="caret"></span>
@@ -75,7 +75,7 @@
                 </div>
             </div>
         </nav>     
-    </div>
+    </div> --}}
 <!--Body Text-->
 
              
@@ -119,15 +119,15 @@
             <td>{{$bus->journey->source}}</td> 
             <td>{{$bus->journey->destination}}</td>         
             <td>
-              <form class="form-group" action="{{route('login')}}" method='get'>
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <button  class='btn btn-primary' type='submit'>Reserve</button>
-                    </form>
+                <form class="form-group" action="{{route('reserve_bus',$bus->Bus_no)}}" method='get'>
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <button  class='btn btn-primary' type='submit'>Reserve</button>   
+                </form> 
             </td>
           </tr>
           @endforeach
         </tbody>
-      </table>
+      </table> 
     </div>        
     </div>        
   </div><!--main content end-->
@@ -181,9 +181,9 @@
 
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{-- <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/nav-scroll.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script> --}}
+    
 </body>
 </html>
-
