@@ -42,6 +42,7 @@
         <div>
         <form action='{{route('select_seat')}}' method='post'>
            {{csrf_field()}}
+           <input type="hidden" name="hidden_bus" id='hidden_bus' value={{Session::get('bus_no')}}>
           <div class="modal-body">
           <table border='0px' id="tab" border-spacing="4px" align='center'> 
           <col width="60">
@@ -102,86 +103,87 @@
 </div>
 <script type="text/javascript">
   var url='{{route('seat_info')}}';
+  var id=$('#hidden_bus').val();
   $.ajax({
         url: url,
         type:"GET", 
-        data: {"id":' '}, 
+        data: {"id":id}, 
         success: function(result){
           $.each(result,function(key,val)
           {
-            if(val.status==1 && val.seatNo==$('#val1').val())
+            if(val.status==1 && val.seat_id==$('#val1').val())
             {
               $('#val1').hide();
             }
-            else if(val.status==1 && val.seatNo==$('#val2').val())
+            else if(val.status==1 && val.seat_id==$('#val2').val())
             {
               $('#val2').hide();
             }
-            else if(val.status==1 && val.seatNo==$('#val3').val())
+            else if(val.status==1 && val.seat_id==$('#val3').val())
             {
               $('#val3').hide();
             }
-            else if(val.status==1 && val.seatNo==$('#val4').val())
+            else if(val.status==1 && val.seat_id==$('#val4').val())
             {
               $('#val4').hide();
             }
-            else if(val.status==1 && val.seatNo==$('#val5').val())
+            else if(val.status==1 && val.seat_id==$('#val5').val())
             {
               $('#val5').hide();
             }
-            else if(val.status==1 && val.seatNo==$('#val6').val())
+            else if(val.status==1 && val.seat_id==$('#val6').val())
             {
               $('#val6').hide();
             }
-            else if(val.status==1 && val.seatNo==$('#val7').val())
+            else if(val.status==1 && val.seat_id==$('#val7').val())
             {
               $('#val7').hide();
             }
-            else if(val.status==1 && val.seatNo==$('#val8').val())
+            else if(val.status==1 && val.seat_id==$('#val8').val())
             {
               $('#val8').hide();
             }
-            else if(val.status==1 && val.seatNo==$('#val9').val())
+            else if(val.status==1 && val.seat_id==$('#val9').val())
             {
               $('#val9').hide();
             }
-            else if(val.status==1 && val.seatNo==$('#val10').val())
+            else if(val.status==1 && val.seat_id==$('#val10').val())
             {
               $('#val10').hide();
             }
-            else if(val.status==1 && val.seatNo==$('#val11').val())
+            else if(val.status==1 && val.seat_id==$('#val11').val())
             {
               $('#val11').hide();
             }
-            else if(val.status==1 && val.seatNo==$('#val12').val())
+            else if(val.status==1 && val.seat_id==$('#val12').val())
             {
               $('#val12').hide();
             }
-            else if(val.status==1 && val.seatNo==$('#val13').val())
+            else if(val.status==1 && val.seat_id==$('#val13').val())
             {
               $('#val13').hide();
             }
-            else if(val.status==1 && val.seatNo==$('#val14').val())
+            else if(val.status==1 && val.seat_id==$('#val14').val())
             {
               $('#val14').hide();
             }
-            else if(val.status==1 && val.seatNo==$('#val15').val())
+            else if(val.status==1 && val.seat_id==$('#val15').val())
             {
               $('#val15').hide();
             }
-            else if(val.status==1 && val.seatNo==$('#val16').val())
+            else if(val.status==1 && val.seat_id==$('#val16').val())
             {
               $('#val16').hide();
             }
-            else if(val.status==1 && val.seatNo==$('#val17').val())
+            else if(val.status==1 && val.seat_id==$('#val17').val())
             {
               $('#val17').hide();
             }
-            else if(val.status==1 && val.seatNo==$('#val18').val())
+            else if(val.status==1 && val.seat_id==$('#val18').val())
             {
               $('#val18').hide();
             }
-            else if(val.status==1 && val.seatNo==$('#val19').val())
+            else if(val.status==1 && val.seat_id==$('#val19').val())
             {
               $('#val19').hide();
             }

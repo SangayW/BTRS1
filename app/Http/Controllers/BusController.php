@@ -8,6 +8,7 @@ use App\Journey;
 use App\Schedule;
 use App\SeatInformation;
 use Session;
+use App\Bus_seat;
 
 class BusController extends Controller
 {
@@ -149,7 +150,12 @@ class BusController extends Controller
     public function retrieveSeats(Request $request)
     {
          if($request->ajax()){
-            $seat=SeatInformation::all();
+            $id=$request->id;
+            $seat=Bus::join('bus_seats','buses.id','bus_seats.bus_id')
+            ->select('bus_seats.*')
+            ->where('buses.Bus_no','=',$id)
+            ->get();
+            //$seat=SeatInformation::all();
             return response()->json($seat);
         }
     }
@@ -160,11 +166,14 @@ class BusController extends Controller
        $count=0;
        if(!empty($request->val1))
         {
-            $seat=SeatInformation::where('seatNo',$request->val1)->first();
-            $seat->status=1;
-            $seat->save();
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            $seat=Bus_seat::where('seat_id',$request->val1)
+            ->where('bus_id',$bus->id)
+            ->first();
+            $seat->status=1;
+            $seat->save();
+            
             if($bus->No_of_seat==0)
             {
                 $bus->status=1;
@@ -174,12 +183,15 @@ class BusController extends Controller
         }
        if(!empty($request->val2))
        {
-            $seat=SeatInformation::where('seatNo',$request->val2)->first();
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $seat=Bus_seat::where('seat_id',$request->val2)
+            ->where('bus_id',$bus->id)
+            ->first();
             $seat->status=1;
             $seat->save();
 
-            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
-            $bus->No_of_seat=$bus->No_of_seat-1;
+           
             if($bus->No_of_seat==0)
             {
                 $bus->status=1;
@@ -189,12 +201,14 @@ class BusController extends Controller
        }
        if(!empty($request->val3))
        {
-            $seat=SeatInformation::where('seatNo',$request->val3)->first();
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $seat=Bus_seat::where('seat_id',$request->val3)
+            ->where('bus_id',$bus->id)
+            ->first();
             $seat->status=1;
             $seat->save();
 
-            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
-            $bus->No_of_seat=$bus->No_of_seat-1;
             if($bus->No_of_seat==0)
             {
                 $bus->status=1;
@@ -204,12 +218,14 @@ class BusController extends Controller
        }
        if(!empty($request->val4))
        {
-            $seat=SeatInformation::where('seatNo',$request->val4)->first();
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $seat=Bus_seat::where('seat_id',$request->val4)
+            ->where('bus_id',$bus->id)
+            ->first();
             $seat->status=1;
             $seat->save();
 
-            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
-            $bus->No_of_seat=$bus->No_of_seat-1;
             if($bus->No_of_seat==0)
             {
                 $bus->status=1;
@@ -219,12 +235,14 @@ class BusController extends Controller
        }
        if(!empty($request->val5))
        {
-            $seat=SeatInformation::where('seatNo',$request->val5)->first();
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $seat=Bus_seat::where('seat_id',$request->val5)
+            ->where('bus_id',$bus->id)
+            ->first();
             $seat->status=1;
             $seat->save();
 
-            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
-            $bus->No_of_seat=$bus->No_of_seat-1;
             if($bus->No_of_seat==0)
             {
                 $bus->status=1;
@@ -234,12 +252,14 @@ class BusController extends Controller
        }
        if(!empty($request->val6))
        {
-            $seat=SeatInformation::where('seatNo',$request->val6)->first();
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $seat=Bus_seat::where('seat_id',$request->val6)
+            ->where('bus_id',$bus->id)
+            ->first();
             $seat->status=1;
             $seat->save();
 
-            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
-            $bus->No_of_seat=$bus->No_of_seat-1;
             if($bus->No_of_seat==0)
             {
                 $bus->status=1;
@@ -249,12 +269,14 @@ class BusController extends Controller
        }
        if(!empty($request->val7))
        {
-            $seat=SeatInformation::where('seatNo',$request->val7)->first();
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $seat=Bus_seat::where('seat_id',$request->val7)
+             ->where('bus_id',$bus->id)
+             ->first();
             $seat->status=1;
             $seat->save();
 
-            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
-            $bus->No_of_seat=$bus->No_of_seat-1;
             if($bus->No_of_seat==0)
             {
                 $bus->status=1;
@@ -264,12 +286,14 @@ class BusController extends Controller
        }
        if(!empty($request->val8))
        {
-            $seat=SeatInformation::where('seatNo',$request->val8)->first();
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $seat=Bus_seat::where('seat_id',$request->val8)
+             ->where('bus_id',$bus->id)
+             ->first();
             $seat->status=1;
             $seat->save();
 
-            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
-            $bus->No_of_seat=$bus->No_of_seat-1;
             if($bus->No_of_seat==0)
             {
                 $bus->status=1;
@@ -279,12 +303,14 @@ class BusController extends Controller
        }
        if(!empty($request->val9))
        {
-            $seat=SeatInformation::where('seatNo',$request->val9)->first();
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $seat=Bus_seat::where('seat_id',$request->val9)
+             ->where('bus_id',$bus->id)
+             ->first();
             $seat->status=1;
             $seat->save();
             
-            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
-            $bus->No_of_seat=$bus->No_of_seat-1;
             if($bus->No_of_seat==0)
             {
                 $bus->status=1;
@@ -294,12 +320,14 @@ class BusController extends Controller
        }
        if(!empty($request->val10))
        {
-            $seat=SeatInformation::where('seatNo',$request->val10)->first();
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $seat=Bus_seat::where('seat_id',$request->val10)
+             ->where('bus_id',$bus->id)
+             ->first();
             $seat->status=1;
             $seat->save();
             
-            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
-            $bus->No_of_seat=$bus->No_of_seat-1;
             if($bus->No_of_seat==0)
             {
                 $bus->status=1;
@@ -309,12 +337,13 @@ class BusController extends Controller
        }
        if(!empty($request->val11))
        {
-            $seat=SeatInformation::where('seatNo',$request->val11)->first();
-            $seat->status=1;
-            $seat->save();
-           
             $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
             $bus->No_of_seat=$bus->No_of_seat-1;
+            $seat=Bus_seat::where('seat_id',$request->val11)
+             ->where('bus_id',$bus->id)
+             ->first();
+            $seat->status=1;
+            $seat->save();
             if($bus->No_of_seat==0)
             {
                 $bus->status=1;
@@ -324,12 +353,14 @@ class BusController extends Controller
        }
        if(!empty($request->val12))
        {
-            $seat=SeatInformation::where('seatNo',$request->val12)->first();
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $seat=Bus_seat::where('seat_id',$request->val12)
+             ->where('bus_id',$bus->id)
+             ->first();
             $seat->status=1;
             $seat->save();
 
-            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
-            $bus->No_of_seat=$bus->No_of_seat-1;
             if($bus->No_of_seat==0)
             {
                 $bus->status=1;
@@ -339,12 +370,14 @@ class BusController extends Controller
        }
        if(!empty($request->val13))
        {
-            $seat=SeatInformation::where('seatNo',$request->val13)->first();
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $seat=Bus_seat::where('seat_id',$request->val13)
+             ->where('bus_id',$bus->id)
+             ->first();
             $seat->status=1;
             $seat->save();
            
-            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
-            $bus->No_of_seat=$bus->No_of_seat-1;
             if($bus->No_of_seat==0)
             {
                 $bus->status=1;
@@ -354,12 +387,14 @@ class BusController extends Controller
        }
        if(!empty($request->val14))
        {
-            $seat=SeatInformation::where('seatNo',$request->val14)->first();
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $seat=Bus_seat::where('seat_id',$request->val14)
+             ->where('bus_id',$bus->id)
+             ->first();
             $seat->status=1;
             $seat->save();
            
-            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
-            $bus->No_of_seat=$bus->No_of_seat-1;
             if($bus->No_of_seat==0)
             {
                 $bus->status=1;
@@ -369,12 +404,14 @@ class BusController extends Controller
        }
        if(!empty($request->val15))
        {
-            $seat=SeatInformation::where('seatNo',$request->val15)->first();
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $seat=Bus_seat::where('seat_id',$request->val15)
+             ->where('bus_id',$bus->id)
+             ->first();
             $seat->status=1;
             $seat->save();
             
-            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
-            $bus->No_of_seat=$bus->No_of_seat-1;
             if($bus->No_of_seat==0)
             {
                 $bus->status=1;
@@ -384,12 +421,14 @@ class BusController extends Controller
        }
        if(!empty($request->val16))
        {
-            $seat=SeatInformation::where('seatNo',$request->val16)->first();
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $seat=Bus_seat::where('seat_id',$request->val16)
+             ->where('bus_id',$bus->id)
+             ->first();
             $seat->status=1;
             $seat->save();
             
-            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
-            $bus->No_of_seat=$bus->No_of_seat-1;
             if($bus->No_of_seat==0)
             {
                 $bus->status=1;
@@ -399,12 +438,15 @@ class BusController extends Controller
        }
        if(!empty($request->val17))
        {
-            $seat=SeatInformation::where('seatNo',$request->val17)->first();
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $seat=Bus_seat::where('seat_id',$request->val17)
+             ->where('bus_id',$bus->id)
+             ->first();
             $seat->status=1;
             $seat->save();
 
-            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
-            $bus->No_of_seat=$bus->No_of_seat-1;
+           
             if($bus->No_of_seat==0)
             {
                 $bus->status=1;
@@ -414,12 +456,15 @@ class BusController extends Controller
        }
        if(!empty($request->val18))
        {
-            $seat=SeatInformation::where('seatNo',$request->val18)->first();
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $seat=Bus_seat::where('seat_id',$request->val18)
+             ->where('bus_id',$bus->id)
+             ->first();
             $seat->status=1;
             $seat->save();
             
-            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
-            $bus->No_of_seat=$bus->No_of_seat-1;
+           
             if($bus->No_of_seat==0)
             {
                 $bus->status=1;
@@ -429,12 +474,15 @@ class BusController extends Controller
        }
        if(!empty($request->val19))
        {
-            $seat=SeatInformation::where('seatNo',$request->val19)->first();
+            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
+            $bus->No_of_seat=$bus->No_of_seat-1;
+            $seat=Bus_seat::where('seat_id',$request->val19)
+             ->where('bus_id',$bus->id)
+             ->first();
             $seat->status=1;
             $seat->save();
             
-            $bus=Bus::where('Bus_no',Session::get('bus_no'))->first();
-            $bus->No_of_seat=$bus->No_of_seat-1;
+           
             if($bus->No_of_seat==0)
             {
                 $bus->status=1;
@@ -449,5 +497,19 @@ class BusController extends Controller
        }
        Session::put('count',$count);
        return redirect()->route('user_login',Session::get('bus_no'));
+    }
+    public function createSeats(Request $request)
+    {
+        $bus_seat=Bus_seat::all();
+        return view('admin.Seat.seatInformation',compact('bus_seat'));
+    }
+    public function storeBusSeats(Request $request)
+    {
+       $bus_seat=new Bus_seat;
+       $bus_seat->bus_id=$request->bus;
+       $bus_seat->seat_id=$request->seat;
+       $bus_seat->save();
+       Session::flash('success', 'Seat information has been created successfully');
+       return redirect()->route('seat_information');
     }
 }

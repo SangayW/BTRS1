@@ -55,6 +55,8 @@ Route::group(['middleware' => 'web'], function () {
 	Route::delete('admin/bus/destroy/{id}',['as'=>'admin.bus.destroy','uses'=>'BusController@destroy']);
 	Route::get('admin/bus/{id}/edit',['as'=>'admin.bus.edit','uses'=>'BusController@edit']);
 	Route::patch('admin/bus/update/{id}',['as'=>'admin.bus.update','uses'=>'BusController@update']); 
+	Route::get('seat_info','BusController@createSeats')->name('seat_information');
+	Route::post('bus_seat','BusController@storeBusSeats')->name('store_bus_seat');
   
   // Route::get('reserve_bus','UserController@reserve')->name('reserve_bus');
   

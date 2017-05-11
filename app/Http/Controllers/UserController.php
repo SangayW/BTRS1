@@ -42,8 +42,4 @@ class UserController extends Controller
         $schedules=Schedule::all();
         return view('users.schedule',compact('schedules'));
     }
-    public function reserve()
-    {
-       echo "jfdkfd";
-    }
 }

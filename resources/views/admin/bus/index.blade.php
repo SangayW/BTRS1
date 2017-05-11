@@ -8,7 +8,7 @@
             <li role="presentation"><a href="{{route('admin.journey.index')}}">Journey Information</a></li>
              <li role="presentation"><a href="{{route('admin.schedule.index')}}">Bus Schedule</a></li>             
              <li role="presentation"><a href="{{route('admin.user.index')}}">Registered Users</a></li>
-             <li role="presentation"><a href="#">Reservation</a></li>
+             <li role="presentation"><a href="{{route('seat_information')}}">Seat Information</a></li>
         </ul>   
         </ul>             
     </div>
