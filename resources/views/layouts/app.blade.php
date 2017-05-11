@@ -45,7 +45,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ url('/') }}"><img src="img/logoxsm.png"></a></li> 
+                        <li><a href="{{ url('/') }}"><img src=" src="{{URL::asset('/img/logoxsm.png')}}"></a></li> 
                         <li style="margin-top: 30px; font-size:18px;"><a href="{{ url('/') }}">Home</a></li>                       
                         <li style="margin-top: 30px; font-size:18px;"><a href="{{ url('/journey') }}">Journey</a></li>
                         <li style="margin-top: 30px; font-size:18px;"><a href="{{ url('/bus') }}">Bus Information</a></li>

@@ -28,7 +28,7 @@
            <br>
            <span><strong>Total Fare:</strong>Nu.{{$bus->price*Session::get('count')}}</span>
            <br>
-           &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;<button class='btn btn-success'>Payment</button>
+           &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;<a class='btn btn-success' href="{{route('payment',$bus->price*Session::get('count'))}}">Payment</a>
 
     </div>
 </div>

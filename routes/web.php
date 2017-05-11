@@ -16,6 +16,7 @@ Route::get('/journey', 'PageController@journey');
 Route::get('/bus', 'PageController@bus');
 Route::get('/search', 'BusController@search')->name('search');
 Route::get('/schedule', 'PageController@schedule');
+Route::get('/payment/{id}','paymentController@payment')->name('payment');
 
 //Normal users
 Route::group(['middleware' => 'auth'], function () {
