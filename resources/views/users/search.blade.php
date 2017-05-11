@@ -12,8 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
-    <!-- <link href="{{ asset('css/btrs.css') }}" rel="stylesheet"> -->
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Acme|Cabin" rel="stylesheet">  
 </head>
@@ -45,12 +44,12 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    {{-- <ul class="nav navbar-nav navbar-right"> --}}
+                    <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                       {{--  @if (Auth::guest()) --}}
-                           {{--  <li style="margin-top: 30px; font-size:18px;"><a href="{{ route('login') }}">Login</a></li>
+                        @if (Auth::guest())
+                           {{--  <li style="margin-top: 30px; font-size:18px;"><a href="{{ route('user_login') }}">Login</a></li>
                             <li style="margin-top: 30px; font-size:18px;"><a href="{{ route('register') }}">Register</a></li> --}}
-                       {{--  @else
+                        @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->email }} <span class="caret"></span>
@@ -75,7 +74,7 @@
                 </div>
             </div>
         </nav>     
-    </div> --}}
+    </div>
 <!--Body Text-->
 
              
@@ -98,7 +97,7 @@
           <th>Sl no:</th>
           <th>Bus Number</th>
           <th>Bus Name</th>
-          <th>No of seats</th>
+          <th>Available seats</th>
           <th>Departure_time</th>
           <th>Driver Phone No</th>
           <th>Journey Source</th>

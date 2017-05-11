@@ -31,7 +31,7 @@
         <h4 class="modal-title" id="myModalLabel">Choose your favorite seat</h4>
         <div>
           <div class="modal-body">
-          <table border='0px'> 
+          <table border='0px' id="tab" border-spacing="4px"> 
           <col width="60">
           <col width="80">
           <col width="60">
@@ -41,38 +41,39 @@
             <td></td>
             <td></td>
             <td></td>
-            <td colspan="4">Diver</td>
+            <td colspan="4"><img src="img/diver.png" alt="" border=3 height=30 width=30>Diver</td>
           </tr>
-            <tr><td>1</td>
+            <tr><td><input type="checkbox"><img src="img/seat.png" alt="" border=3 height=30 width=30>1</td>
                 <td></td>
-                <td>2</td>
-                <td>3</td>
+                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>2</td>
+                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>3</td>
             </tr>
-            <tr><td>4</td>
+            <br>
+            <tr><td><img src="img/seat.png" alt="" border=3 height=30 width=30>4</td>
                 <td></td>
-                <td>5</td>
-                <td>6</td>
+                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>5</td>
+                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>6</td>
             </tr>
-            <tr><td>7</td>
+            <tr><td><img src="img/seat.png" alt="" border=3 height=30 width=30>7</td>
                 <td></td>
-                <td>8</td>
-                <td>9</td>
+                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>8</td>
+                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>9</td>
             </tr>
-            <tr><td>10</td>
+            <tr><td><img src="img/seat.png" alt="" border=3 height=30 width=30>10</td>
                 <td></td>
-                <td>11</td>
-                <td>12</td>
+                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>11</td>
+                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>12</td>
             </tr>
-            <tr><td>13</td>
+            <tr><td><img src="img/seat.png" alt="" border=3 height=30 width=30>13</td>
                 <td></td>
-                <td>14</td>
-                <td>15</td>
+                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>14</td>
+                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>15</td>
             </tr>
             <tr>
-                <td>16</td>
-                <td>17</td>
-                <td>18</td>
-                <td>19</td>
+                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>16</td>
+                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>17</td>
+                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>18</td>
+                <td><img src="img/seat.png" alt="" border=3 height=30 width=30>19</td>
             </tr>
           </table>
         </div>
