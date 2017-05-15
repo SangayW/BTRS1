@@ -71,17 +71,6 @@ class BusController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -556,5 +545,23 @@ class BusController extends Controller
         $passenger->bus_no=Session::get('bus_no');
         $passenger->save();
         return view('users.payment');
+    }
+
+    public function getBusSeat(Request $request)
+    {
+        if($request->ajax()){
+            $bus_seat1=array();
+            $id=$request->id;
+            $bus_seat=Bus_seat::where('bus_id','=',$id)->pluck('seat_id');
+            $b_seat=explode(',',$bus_seat);
+            foreach($b_seat as $seat)
+            {
+                $bus_seat1[]=trim($seat,'[]');
+            }
+            $seat=SeatInformation::select('seat_informations.*')
+            ->whereNotIn('seat_informations.seatNo',$bus_seat1)
+            ->get();
+            return response()->json($seat);
+        }
     }
 }

@@ -64,7 +64,7 @@
             </div>
             <div class='form-group'>
              <div class='col-xs-10 col-xs-offset-3 input-group'>
-               <button class='btn btn-success' type='submit'>Payment</button>
+               <input class='btn btn-success' type='submit' value='Payment'<?php if($count==0){?>disabled <?php }?>/>
              </div> 
             </div>
         </form>

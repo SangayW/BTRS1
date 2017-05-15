@@ -89,6 +89,7 @@ Route::group(['middleware' => 'web'], function () {
 });
 Route::post('/getSeatInfo','BusController@getSeatNumber')->name('getSeatInfo');
 Route::post('/store_passenger','BusController@storePassengerDetails')->name('save_passenger');
+Route::get('/get_bus_seat','BusController@getBusSeat')->name('get_bus_seat');
 
 
 

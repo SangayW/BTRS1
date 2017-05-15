@@ -85,7 +85,7 @@
         <div class='form-group'>
           <label for='bus' class='col-xs-2'>Bus</label>
             <div class='col-xs-10 input-group'>
-              <select class='form-control' name='bus'>
+              <select class='form-control' name='bus' id='bus'>
                 <option disabled selected>Select Bus</option>
                 <?php 
                   $bus=App\Bus::all();
@@ -98,19 +98,12 @@
               </select>
             </div>
         </div>
-        <div class='form-group'>
+         <div class='form-group'>
           <label for='seat' class='col-xs-2'>Seat</label>
             <div class='col-xs-10 input-group'>
-              <select class='form-control' name='seat'>
+              <select class='form-control' name='seat' id='seat'>
                 <option disabled selected>Select seat</option>
-                <?php 
-                  $seats=App\SeatInformation::all();
-                  foreach($seats as $seat):
-                ?>
-                <option value="{{$seat->id}}">{{$seat->seatNo}}</option>
-                <?php 
-                  endforeach
-                ?>
+                <option value=""></option>
               </select>
             </div>
         </div>
@@ -129,6 +122,25 @@
       {
         'searching':false,
       });
-  })
+  });
+
+  $('#bus').change(function()
+  {
+    id=$(this).val();
+    view_url='{{route('get_bus_seat')}}';
+      $.ajax({
+        url: view_url,
+        type:"GET", 
+        data: {"id":id}, 
+        success: function(result){
+          console.log(result);
+          $('#seat').empty();
+          $.each(result,function(key,val)
+          {
+            $('#seat').append('<option value="'+val.id+'">'+val.seatNo+'</option>');
+          });
+        }
+      });
+  });
 </script>
 @endsection

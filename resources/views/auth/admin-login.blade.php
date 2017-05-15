@@ -1,6 +1,47 @@
-@extends('layouts.app')
-@section('content')
-<div class="container">
+<!DOCTYPE html>
+<html lang="{{ config('app.locale') }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+    <!-- Styles -->
+    <!-- Bootstrap core CSS     -->
+   <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
+    <!-- Animation library for notifications-->  
+    <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet"/>
+    <!--  Light Bootstrap Table core CSS   --> 
+    <link href="{{asset('css/light-bootstrap-dashboard.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/pe-icon-7-stroke.css') }}" rel="stylesheet" />
+    <!--  CSS for Demo Purpose, don't include it in your project -->    
+    <link href="{{ asset('css/demo.css') }} " rel="stylesheet" />
+    <link href="{{ asset('css/w3.css') }} " rel="stylesheet" />
+    <link href="{{ asset('css/w333.css') }} " rel="stylesheet" />
+    <link href="{{ asset('css/custom.css') }} " rel="stylesheet" />
+    <!--<link href="{{ asset('css/bus.css') }} " rel="stylesheet" />-->
+    <link rel="stylesheet" type="text/css" href="{{url ('css/bus.css')}}"> 
+    <link href="https://fonts.googleapis.com/css?family=Acme|Cabin" rel="stylesheet">
+      <!-- Datables Style -->
+      <link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet" media="screen">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  
+
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">    
+</head>
+<body>         
+<div class="container" style='margin-top:100px'>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -54,4 +95,5 @@
         </div>
     </div>
 </div>
-@endsection
+</body>
+</html>
