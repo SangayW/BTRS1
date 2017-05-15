@@ -21,7 +21,7 @@
     <div class="container-fluid bg"> 
     <div class="row">        
         <nav class="navbar navbar-default navbar-static-top">
-            <!--<a href="#"><img src="../image/logo.png" alt="Logo" width="210px" height="120px" class="col-md-2"></a>-->
+ 
             <div class="container">
                 <div class="navbar-header">
                     <!-- Collapsed Hamburger -->
@@ -38,17 +38,18 @@
                     <ul class="nav navbar-nav">
                         <li><a href="{{ url('/') }}"><img src="img/logoxsm.png"></a></li> 
                         <li style="margin-top: 30px; font-size:18px;"><a href="{{ url('/') }}">Home</a></li>                       
-                        <li style="margin-top: 30px; font-size:18px;"><a href="{{ url('/journey') }}">Journey</a></li>
-                        <li style="margin-top: 30px; font-size:18px;"><a href="{{ url('/bus') }}">Bus Information</a></li>
-                        <li style="margin-top: 30px; font-size:18px;"><a href="{{ url('/schedule') }}">Schedule</a></li>
+                        <li style="margin-top: 30px; font-size:18px;"><a href="#{{-- {{ url('/journey') }} --}}">About Us</a></li>
+                        <li style="margin-top: 30px; font-size:18px;"><a href="#{{-- {{ url('/bus') }} --}}">Vision</a></li>
+                        <li style="margin-top: 30px; font-size:18px;"><a href="#{{-- {{ url('/schedule') }} --}}">Mission</a></li>
+                         <li style="margin-top: 30px; font-size:18px;"><a href="#{{-- {{ url('/schedule') }} --}}">Contact Us</a></li>
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
+                 {{--    <!Right Side Of Navbar >
                     <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
+                        <!Authentication Links >
                         @if (Auth::guest())
-                           {{--  <li style="margin-top: 30px; font-size:18px;"><a href="{{ route('user_login') }}">Login</a></li>
-                            <li style="margin-top: 30px; font-size:18px;"><a href="{{ route('register') }}">Register</a></li> --}}
+                            <li style="margin-top: 30px; font-size:18px;"><a href="{{ route('login') }}">Login</a></li>
+                            <li style="margin-top: 30px; font-size:18px;"><a href="{{ route('register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -70,7 +71,7 @@
                                 </ul>
                             </li>
                         @endif
-                    </ul>
+                    </ul> --}}
                 </div>
             </div>
         </nav>     

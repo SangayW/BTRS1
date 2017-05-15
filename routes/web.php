@@ -14,9 +14,12 @@
 Route::get('/', 'PageController@index');
 Route::get('/journey', 'PageController@journey');
 Route::get('/bus', 'PageController@bus');
+
 Route::get('/search', 'BusController@search')->name('search');
 Route::get('/schedule', 'PageController@schedule');
 Route::get('/payment/{id}','paymentController@payment')->name('payment');
+
+
 
 //Normal users
 Route::group(['middleware' => 'auth'], function () {
@@ -40,6 +43,7 @@ Route::get('/home', 'UserController@index')->name('user_login');
 //admins
 Route::group(['middleware' => 'web'], function () {
 	Route::get('admin', 'AdminController@index')->name('dashboard');
+	Route::get('admin', 'BusInfoController@dashboard')->name('admin_dashboard1');
 	Route::get('admin/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
 	Route::post('admin/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
 	//journey
@@ -50,13 +54,13 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('admin/journey/{id}/edit',['as'=>'admin.journey.edit','uses'=>'JourneyController@edit']);
 	Route::patch('admin/journey/update/{id}',['as'=>'admin.journey.update','uses'=>'JourneyController@update']); 
 	//Bus information
-	Route::get('admin/bus',['as'=>'admin.bus.index','uses'=>'BusController@index']);
+	Route::get('admin/bus',['as'=>'admin.bus.index','uses'=>'BusInfoController@index']);
 	Route::get('admin/bus/create',['as'=>'admin.bus.create','uses'=>'BusController@create']);
 	Route::post('admin/bus/store',['as'=>'admin.bus.store','uses'=>'BusController@store']);
 	Route::delete('admin/bus/destroy/{id}',['as'=>'admin.bus.destroy','uses'=>'BusController@destroy']);
 	Route::get('admin/bus/{id}/edit',['as'=>'admin.bus.edit','uses'=>'BusController@edit']);
 	Route::patch('admin/bus/update/{id}',['as'=>'admin.bus.update','uses'=>'BusController@update']); 
-	Route::get('seat_info','BusController@createSeats')->name('seat_information');
+	Route::get('seat_info','BusInfoController@createSeats')->name('seat_information');
 	Route::post('bus_seat','BusController@storeBusSeats')->name('store_bus_seat');
   
   // Route::get('reserve_bus','UserController@reserve')->name('reserve_bus');
@@ -83,6 +87,9 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('staff/login', 'Auth\StaffLoginController@showLoginForm')->name('staff.login');
 	Route::post('staff/login', 'Auth\StaffLoginController@login')->name('staff.login.submit');    
 });
+Route::post('/getSeatInfo','BusController@getSeatNumber')->name('getSeatInfo');
+Route::post('/store_passenger','BusController@storePassengerDetails')->name('save_passenger');
+
 
 
 

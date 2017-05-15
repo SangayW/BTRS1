@@ -25,6 +25,7 @@ class AdminController extends Controller
     {
         return view('admin.dashboard');
     }
+    
     public function payment()
     {
         return view('users.payment');

@@ -1,16 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.adminLayout')
 @section('content')
 <div id="parent">
     <div id="sidebar">
-        <ul class="nav nav-pills nav-stacked">             
-            <li role="presentation"><a href="#">My Profile</a></li>           
+        <ul class="nav nav-pills nav-stacked">            
+            <li role="presentation"><a href="{{route('admin_dashboard1')}}">Dashboard</a></li>            
              <li role="presentation"><a href="{{route('admin.bus.index')}}">Bus Information</a></li>            
             <li role="presentation"><a href="{{route('admin.journey.index')}}">Journey Information</a></li>
              <li role="presentation"><a href="{{route('admin.schedule.index')}}">Bus Schedule</a></li>             
-             <li role="presentation"><a href="{{route('admin.user.index')}}">Registered Users</a></li>
-             <li role="presentation"><a href="{{route('seat_information')}}">SeatInformation</a></li>
-        </ul>   
-        </ul>             
+             {{-- <li role="presentation"><a href="{{route('admin.user.index')}}">Registered Users</a></li> --}}
+             <li role="presentation"><a href="#">Reservation</a></li>
+             <li role="presentation"><a href="{{route('seat_information')}}">Seat Information</a></li>
+        </ul>           
     </div>
     <div id="main-content">
         <div class="row">
@@ -123,4 +123,12 @@
     </div>
 </div>
 </div>
+<script type="text/javascript">
+  $(function(){
+    $('#table1').dataTable(
+      {
+        'searching':false,
+      });
+  })
+</script>
 @endsection

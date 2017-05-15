@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use Session;
 
 class LoginController extends Controller
 {
@@ -15,7 +16,7 @@ class LoginController extends Controller
             'password' => $request->password
             ])){
             $user = User::where('email',$request->email)->first();
-            session(['user_id' => $user->id]);
+            Session(['user_id' => $user->id]);
              return  redirect()->route('user_login');
         }
         return redirect()->back();

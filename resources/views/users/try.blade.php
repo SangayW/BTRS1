@@ -12,61 +12,24 @@
         </ul>       
     </div>
     <div id="main-content">
-    <form action="{{route('getSeatInfo')}}" method="post">
-       <div class='form-group'>
-          {{csrf_field()}}
-        </div>
         <h1>Reservation Panel</h1>
         <?php $user=App\User::where('id',Session::get('user_id'))->first(); 
         ?>
-            <div class='form-group'>
-              <label for='bus' class='col-xs-2'>Bus:</label>
-                <div class='col-xs-8 input-group'>
-                  <input type="text" name="bus" value="{{$bus->Bus_name}}" disabled>
-                </div>
-            </div>
-           <div class='form-group'>
-              <label for='user' class='col-xs-2'>User:</label>
-                <div class='col-xs-8 input-group'>
-                  <input type="text" name="user" value="{{$user->fname.' '.$user->lname}}" disabled>
-                </div>
-            </div>
-            <div class='form-group'>
-              <label for='available_seat' class='col-xs-2'>No.of seats available:</label>
-                <div class='col-xs-8 input-group'>
-                  <input type="text" name="available_seat" value="{{$bus->No_of_seat.'seats'}}" disabled>&nbsp;&nbsp;
-                  <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#seatModal' id='view'>View</button>
-                </div>
-            </div>
-            <div class='form-group clearfix'>
-              <label for='booked_seat' class='col-xs-2'>Seat Booked:</label>
-                <?php $store_seat=App\Store_seat::all();
-                  $count=0;
-                  ?>
-                  <div class='col-xs-8 input-group'>
-                  @foreach($store_seat as $store)
-                   {{$store->seat_no}},
-                    <?php $count++;?>
-                  @endforeach
-                </div>
-            </div>
-             <div class='form-group'>
-              <label for='fare' class='col-xs-2'>Fare Per Head:</label>
-                <div class='col-xs-8 input-group'>
-                  <input type="text" name="fare"  value="Nu.{{$bus->price}}" disabled>
-                </div>
-            </div>
-            <div class='form-group'>
-              <label for='total_fare' class='col-xs-2'>Total Fare:</label>
-                <div class='col-xs-8 input-group'>
-                  <input type="text" name="total_fare" value="Nu.{{$bus->price*$count}}">
-                </div>
-            </div>
-            <div class='form-group'>
-             <div class='col-xs-10 col-xs-offset-3 input-group'>
-               <button class='btn btn-success' type='submit'>Payment</button>
-             </div> 
-            </div>
+           <span><strong>Bus:{{$bus->Bus_name}}</strong>
+           <br>
+           <span><strong>User:{{$user->fname.' '.$user->lname}}</strong>
+           <br>
+           <span><strong>No.of seats available:{{$bus->No_of_seat.'seats'}}</strong></span>
+           <button class='btn btn-primary' data-toggle='modal' data-target='#seatModal'>View</button>
+           <br>
+           <span><strong>No_of_seat_booked:</strong>{{Session::get('count')}}</span>
+           <input type='hidden' name='seat_book1[]' id='seat_book1'>
+           <br>
+           <span><strong>Fare/person:</strong>Nu.{{$bus->price}}</span>
+           <br>
+           <span><strong>Total Fare:</strong>Nu.{{$bus->price*Session::get('count')}}</span>
+           <br>
+           &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;<a class='btn btn-success' href="{{route('payment',$bus->price*Session::get('count'))}}">Payment</a>
         </form>
     </div>
 </div>
@@ -127,6 +90,7 @@
                 <td><input type="checkbox" value=19 name='val19' id='val19'><img src="img/seat.png" alt="" border=3 height=30 width=30></td>
             </tr>
           </table>
+        </div>
        
       </div>
        <div class="modal-footer">
@@ -139,6 +103,7 @@
   </div>
 </div>
 <script type="text/javascript">
+  var i=new Array();
   var url='{{route('seat_info')}}';
   var id=$('#hidden_bus').val();
   $.ajax({
@@ -150,82 +115,107 @@
           {
             if(val.status==1 && val.seat_id==$('#val1').val())
             {
+              i=val.seat_id;
               $('#val1').hide();
             }
-            if(val.status==1 && val.seat_id==$('#val2').val())
+            else if(val.status==1 && val.seat_id==$('#val2').val())
             {
+              i=val.seat_id;
               $('#val2').hide();
             }
-            if(val.status==1 && val.seat_id==$('#val3').val())
+            else if(val.status==1 && val.seat_id==$('#val3').val())
             {
+              i=val.seat_id;
               $('#val3').hide();
             }
-            if(val.status==1 && val.seat_id==$('#val4').val())
+            else if(val.status==1 && val.seat_id==$('#val4').val())
             {
+              i=val.seat_id;
               $('#val4').hide();
             }
-            if(val.status==1 && val.seat_id==$('#val5').val())
+            else if(val.status==1 && val.seat_id==$('#val5').val())
             {
+              i=val.seat_id;
               $('#val5').hide();
             }
-            if(val.status==1 && val.seat_id==$('#val6').val())
+            else if(val.status==1 && val.seat_id==$('#val6').val())
             {
+              i=val.seat_id;
               $('#val6').hide();
             }
-            if(val.status==1 && val.seat_id==$('#val7').val())
+            else if(val.status==1 && val.seat_id==$('#val7').val())
             {
+              i=val.seat_id;
               $('#val7').hide();
             }
-            if(val.status==1 && val.seat_id==$('#val8').val())
+            else if(val.status==1 && val.seat_id==$('#val8').val())
             {
+              i=val.seat_id;
               $('#val8').hide();
             }
-            if(val.status==1 && val.seat_id==$('#val9').val())
+            else if(val.status==1 && val.seat_id==$('#val9').val())
             {
+              i=val.seat_id;
               $('#val9').hide();
             }
-            if(val.status==1 && val.seat_id==$('#val10').val())
+            else if(val.status==1 && val.seat_id==$('#val10').val())
             {
+              i=val.seat_id;
               $('#val10').hide();
             }
-            if(val.status==1 && val.seat_id==$('#val11').val())
+            else if(val.status==1 && val.seat_id==$('#val11').val())
             {
+              i=val.seat_id;
               $('#val11').hide();
             }
-            if(val.status==1 && val.seat_id==$('#val12').val())
+            else if(val.status==1 && val.seat_id==$('#val12').val())
             {
+              i=val.seat_id;
               $('#val12').hide();
             }
-            if(val.status==1 && val.seat_id==$('#val13').val())
+            else if(val.status==1 && val.seat_id==$('#val13').val())
             {
+              i=val.seat_id;
               $('#val13').hide();
             }
-            if(val.status==1 && val.seat_id==$('#val14').val())
+            else if(val.status==1 && val.seat_id==$('#val14').val())
             {
+              i=val.seat_id;
               $('#val14').hide();
             }
-            if(val.status==1 && val.seat_id==$('#val15').val())
+            else if(val.status==1 && val.seat_id==$('#val15').val())
             {
+              i=val.seat_id;
               $('#val15').hide();
             }
-            if(val.status==1 && val.seat_id==$('#val16').val())
+            else if(val.status==1 && val.seat_id==$('#val16').val())
             {
+              i=val.seat_id;
               $('#val16').hide();
             }
-            if(val.status==1 && val.seat_id==$('#val17').val())
+            else if(val.status==1 && val.seat_id==$('#val17').val())
             {
+              i=val.seat_id;
               $('#val17').hide();
             }
-            if(val.status==1 && val.seat_id==$('#val18').val())
+            else if(val.status==1 && val.seat_id==$('#val18').val())
             {
+              i=val.seat_id;
               $('#val18').hide();
             }
-            if(val.status==1 && val.seat_id==$('#val19').val())
+            else if(val.status==1 && val.seat_id==$('#val19').val())
             {
+              i=val.seat_id;
               $('#val19').hide();
             }
+            else
+            {
+
+            }
+            $('#seat_book1').val(i);
+            console.log(i);
           });
         }
       });
-</script>
+</script>>
 @endsection
