@@ -118,8 +118,11 @@ class BusController extends Controller
     {
         $schedule_id=array();
         $source=$request->journey_id1;
+        Session::put('source',$source);
         $destination=$request->journey_id2;
+        Session::put('destination',$destination);
         $date=$request->date;
+        Session::put('date',$date);
         $schedules=Schedule::where('Date',$date)->pluck('id');
         $schedule=explode(',',$schedules);
         foreach($schedule as $schedules_id)
@@ -547,7 +550,8 @@ class BusController extends Controller
         $passenger->seat_no=$request->hidden_seat1;
         $passenger->bus_no=Session::get('bus_no');
         $passenger->save();
-        return view('users.payment');
+       // return redirect()->route('payment');
+        return redirect()->back()->with('error_code', 5);
     }
 
     public function getBusSeat(Request $request)

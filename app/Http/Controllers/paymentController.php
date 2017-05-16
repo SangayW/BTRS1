@@ -6,9 +6,8 @@ use Illuminate\Http\Request;
 
 class paymentController extends Controller
 {
-    public function payment($id)
+    public function payment()
     {
-        Session::put('price',$id);
         return view('users.payment');
 
     }

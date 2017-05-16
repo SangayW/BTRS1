@@ -152,10 +152,27 @@
             <div class='col-xs-10 input-group'>
              <?php $store_seat=App\Store_seat::all();?>
             @foreach($store_seat as $store)
-              <input type="text" name="seat" style="text-align: center" value={{$store->seat_no}}  size="4">&nbsp;&nbsp;<button type='button' class='btn btn-primary' data-toggle="modal" data-target="#addModal" onclick="onClickValue('{{$store->seat_no}}')">Add Passenger</button><br><br>
+              <input type="text" name="seat" style="text-align: center" value={{$store->seat_no}}  size="4">&nbsp;&nbsp;
+              <?php 
+                  $passenger=App\Passenger_detail::where('seat_no',$store->seat_no)
+                    ->where('bus_no',Session::get('bus_no'))
+                    ->first();
+              ?>
+              @if(!empty($passenger))
+              <input class='btn-success' style="border:none" id='passenger_added' value="Passenger Added">
+              <br>
+              @else
+                 <button type='button' class='btn btn-primary' data-toggle="modal" data-target="#addModal" onclick="onClickValue('{{$store->seat_no}}')" id='passenger'>Add Passenger</button><br><br>
+              @endif
             @endforeach
             </div>
         </div>
+        <form action='{{route('show_payment_page')}}' method='post'>
+          {{csrf_field()}}
+         <div class="modal-footer">
+           <input type="submit" class="btn btn-primary" id='save1' disabled value='Next'>
+        </div>
+        </form>
          </div>
         <div>
         </div>
@@ -222,6 +239,13 @@
     </div>
   </div>
 </div>
+@if(!empty(Session::get('error_code')) && Session::get('error_code') == 5)
+<script>
+$(function() {
+    $('#addPassenger').modal('show');
+});
+</script>
+@endif
 <script type="text/javascript">
   var url='{{route('seat_info')}}';
   var id=$('#hidden_bus').val();
@@ -328,5 +352,18 @@
         }
       });
   }
+  $("#passenger").click(function(event){
+   event.preventDefault();
+   $('#save1').prop("disabled", false); 
+});
+
+$(function(){
+  var val=$('#passenger_added').val();
+  if(val=="Passenger Added")
+  {
+    $('#save1').prop("disabled", false); 
+  }
+
+});
 </script>
 @endsection

@@ -11,13 +11,13 @@
 |
 */
 //Front page
-Route::get('/', 'PageController@index');
+Route::get('/', 'PageController@index')->name('welcome');
 Route::get('/journey', 'PageController@journey');
 Route::get('/bus', 'PageController@bus');
 
 Route::get('/search', 'BusController@search')->name('search');
 Route::get('/schedule', 'PageController@schedule');
-Route::get('/payment/{id}','paymentController@payment')->name('payment');
+Route::get('/payment','paymentController@payment')->name('payment');
 
 
 
@@ -90,6 +90,9 @@ Route::group(['middleware' => 'web'], function () {
 Route::get('/getSeatInfo','BusController@getSeatNumber')->name('getSeatInfo');
 Route::post('/store_passenger','BusController@storePassengerDetails')->name('save_passenger');
 Route::get('/get_bus_seat','BusController@getBusSeat')->name('get_bus_seat');
+Route::post('/store_reservation','ReservationController@store')->name('store_reservation');
+Route::get('/complete_reservation','ReservationController@completeReservation')->name('complete_reservation');
+Route::post('/show_payment_page','ReservationController@showPaymentPage')->name('show_payment_page');
 
 
 
