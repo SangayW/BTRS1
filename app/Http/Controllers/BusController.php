@@ -530,8 +530,11 @@ class BusController extends Controller
 
     public function getSeatNumber(Request $request)
     {
-        Session::put('total_fare',$request->total_fare);
-        return view('users.payment');
+        if($request->ajax()){
+            $id=$request->id;
+            Session::put('total_fare',$id);
+            return response()->json($id);
+        }    
     }
 
     public function storePassengerDetails(Request $request)

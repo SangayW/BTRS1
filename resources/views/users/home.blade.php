@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class='form-group clearfix'>
-              <label for='booked_seat' class='col-xs-2'>Seat Booked:</label>
+              <label for='booked_seat' class='col-xs-2'>Booked Seat Number:</label>
                 <?php $store_seat=App\Store_seat::all();
                   $count=0;
                   ?>
@@ -64,7 +64,8 @@
             </div>
             <div class='form-group'>
              <div class='col-xs-10 col-xs-offset-3 input-group'>
-               <input class='btn btn-success' type='submit' value='Payment'<?php if($count==0){?>disabled <?php }?>/>
+               <input class='btn btn-success' type='button' value='Next'<?php if($count==0){?>disabled <?php }?> data-toggle='modal' data-target="#addPassenger" onclick='passTotalFare("{{$bus->price*$count}}")'/>
+
              </div> 
             </div>
         </form>
@@ -134,6 +135,89 @@
           <button class="btn btn-default" data-dismiss="modal" >Cancel</button>
       </div>
        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="addPassenger" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Passenger Details</h4>
+        </div>
+         <div class="modal-body">
+          <div class='form-group clearfix'>
+          <label for='fname' class='col-xs-2'>Seat Numbers:</label>
+            <div class='col-xs-10 input-group'>
+             <?php $store_seat=App\Store_seat::all();?>
+            @foreach($store_seat as $store)
+              <input type="text" name="seat" style="text-align: center" value={{$store->seat_no}}  size="4">&nbsp;&nbsp;<button type='button' class='btn btn-primary' data-toggle="modal" data-target="#addModal" onclick="onClickValue('{{$store->seat_no}}')">Add Passenger</button><br><br>
+            @endforeach
+            </div>
+        </div>
+         </div>
+        <div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Passenger Details</h4>
+      </div>
+      <div class="modal-body">
+       <form action='{{route("save_passenger")}}' method='post'>
+          {{csrf_field()}}
+          <div class='form-group'>
+            <label for='title' class='col-xs-2'>Title</label>
+              <div class='col-xs-10 input-group'>
+                <select class='form-control' name='title' required>
+                  <option disabled selected>Select title</option>
+                  <option>Ms.</option>
+                  <option>Mrs.</option>
+                  <option>Mr.</option>
+                </select>
+              </div>
+          </div>
+          <div class='form-group'>
+            <label for='full_name' class='col-xs-2'>Full Name</label>
+                <div class='col-xs-10 input-group'>
+                    <input type="text" name="full_name" class="form-control" placeholder="Enter Passenger full Name" required>
+                </div>
+          </div>
+          <div class='form-group'>
+            <label for='cid' class='col-xs-2'>CID</label>
+                <div class='col-xs-10 input-group'>
+                    <input type="text" name="cid" class="form-control" placeholder="Enter cid number">
+                </div>
+          </div>
+            <div class='form-group'>
+              <label for='gender' class='col-xs-2'>Gender</label>
+                <div class='col-xs-10 input-group'>
+                  <select class='form-control' name='gender' required>
+                      <option disabled selected>Select gender</option>
+                        <?php 
+                          $gender=App\EnumGender::all();
+                          foreach($gender as $genders):
+                        ?>
+                        <option value="{{$genders->id}}">{{$genders->gender}}</option>
+                        <?php 
+                          endforeach
+                        ?>
+                 </select>
+                </div>
+            </div>
+            <input type="hidden" name="hidden_seat1" id='hidden_seat1'>
+      <div class="modal-footer">
+      <input type='hidden' name='hidden_seat' id='hidden_seat'>
+          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok" id='save'>Save</button>
+          <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
+      </div>
+      </form>
       </div>
     </div>
   </div>
@@ -227,5 +311,22 @@
           });
         }
       });
+  function onClickValue(id)
+  {
+    $('#hidden_seat1').val(id);
+  }
+
+  function passTotalFare(id)
+  {
+    var url='{{route('getSeatInfo')}}';
+    $.ajax({
+        url: url,
+        type:"GET", 
+        data: {"id":id}, 
+        success: function(result){
+          console.log(result);
+        }
+      });
+  }
 </script>
 @endsection
